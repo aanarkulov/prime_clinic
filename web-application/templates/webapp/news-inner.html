@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load staticfiles i18n %}
+
+{% block navigation %}
+    <li><a href="{% url 'webapp:index' %}#news">{% trans 'Новости и Блог' %}</a></li>
+{% endblock %}
+
+{% block content %}
+    <section class="news-inner">
+        <div class="uk-container">
+            <div class="uk-text-center">
+                <div class="badge">{{ news.added_to }}</div>
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="uk-grid" uk-grid="">
+                <div class="uk-width-1-4@l uk-width-1-3@m uk-flex-last@m">
+                    <div class="other-news">
+                        <h4>{% trans 'Другие новости' %}</h4>
+                        {% for item in news_and_blog %}
+                            {% if item != news %}
+                                <div class="item"><a class="link-to-news"
+                                                     href="{% url 'webapp:news_and_blog' item.slug %}"></a>
+                                    <div class="image-block uk-cover-container">
+                                        <img src="{{ item.image.url }}" alt="" uk-cover="">
+                                    </div>
+                                    <div class="text-block">
+                                        <p>{{ item.title }}</p>
+                                    </div>
+                                </div>
+                                {% if forloop.counter != news_and_blog.count %}
+                                    <hr>{% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="uk-width-expand@m ">
+                    <div class="item"><img src="{{ news.image.url }}" alt="">
+                        {{ news.description|safe }}
+                        <br><br><br>
+                        <div class="auchor uk-margin">
+                            <div class="item">
+                                <div class="img-wrapper uk-cover-container"><img
+                                        src="https://secure.gravatar.com/avatar/c8d02f3ef589acc717f707d7e1a25dee?s=96&amp;d=mm&amp;r=g"
+                                        uk-cover="" alt="Администратор" class="uk-cover"
+                                        style="width: 80px; height: 80px;"></div>
+                                <div class="text-wrap"><p>Автор</p><h4>Администратор</h4></div>
+                            </div>
+                        </div>
+                        <div class="share"><img src="img/png/share.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="commits-block"><h2 class="uk-text-center">1 комментарий(ев)</h2>
+        <ul>
+            <li id="comment-16">
+                <div class="img-wrapper uk-cover-container"><img
+                        src="https://secure.gravatar.com/avatar/8d7f8f96834d152aa4f1ab35a7e8ebd4?s=96&amp;d=mm&amp;r=g"
+                        alt="" uk-cover="" class="uk-cover" style="width: 50px; height: 50px;"></div>
+                <div class="text-wrap"><h4>aaa</h4>
+                    <p>aaa</p> <a href="#add_comment" class="reply" data-id="16">Ответить</a></div>
+            </li>
+        </ul>
+        <h2 class="uk-text-left" id="add_comment">Оставить комментарий</h2>
+        <div id="respond">
+            <form class="uk-width-3-4@m" action="https://prime.kg/wp-comments-post.php" method="post">
+                <div class="uk-grid uk-grid-small uk-child-width-1-2@m" uk-grid="">
+                    <div class="uk-first-column">
+                        <div class="uk-margin-small-bottom"><label>Имя </label><sup>*</sup></div>
+                        <input id="author" name="author" type="text" value="" maxlength="245" required="required"
+                               class="uk-input"></div>
+                    <div>
+                        <div class="uk-margin-small-bottom"><label>E-mail </label><sup>*</sup></div>
+                        <input id="email" name="email" type="text" value="" maxlength="100"
+                               aria-describedby="email-notes" required="required" class="uk-input"></div>
+                    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+                        <div class="uk-margin-small-bottom"><label>Сообщение </label><sup>*</sup></div>
+                        <textarea id="comment" name="comment" rows="5" maxlength="65525" required="required"
+                                  class="uk-textarea"></textarea></div>
+                    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+                        <input name="submit" type="submit" id="submit" class="submit uk-button uk-button-default"
+                               value="Отправить">
+                        <input type="hidden" name="comment_post_ID" value="614" id="comment_post_ID">
+                        <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

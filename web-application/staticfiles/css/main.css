@@ -1,0 +1,48 @@
+.is-valid {
+    border: 1px solid #28a745 !important;
+}
+
+.is-invalid {
+    border: 1px solid #dc3545 !important;
+}
+
+.invalid-feedback {
+    font-size: 14px;
+    color: #D85D40 !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.form-text {
+    display: block;
+    margin-top: .25rem;
+}
+
+.wpcf7-response-output {
+    margin: 25px 0 0 !important;
+    padding: 6px 10px !important;
+    border-width: 1px !important;
+    font-size: 14px !important;
+}
+
+div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
+    border: 2px solid #f7e700;
+}
+
+.make-an-appointment .coast {
+    padding-left: 60px;
+    background-image: url(../img/png/coast.png);
+    background-position: 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.make-an-appointment .duration {
+    padding-left: 60px;
+    background-image: url(../img/png/calendar.png);
+    background-position: 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+}

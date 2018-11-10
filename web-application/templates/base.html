@@ -1,0 +1,41 @@
+{% load staticfiles i18n %}
+
+<!DOCTYPE html>
+<html lang="ru" ng-app="prime.clinic" ng-csp="no-unsafe-eval | no-inline-style" ng-cloak>
+<head>
+    {% include "includes/head.html" %}
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div class="uk-offcanvas-content">
+
+    {% include "includes/tiny_header.html" %}
+
+    {% include "includes/header.html" %}
+    {% if title != 'Главная' %}
+    <section class="pagination-banner" style="background-image: url({% static 'img/jpg/bgbr.jpg' %});"
+             uk-parallax="bgy: -200">
+        <div class="uk-container">
+            <div class="uk-text-center">
+                <ul class="uk-breadcrumb uk-flex-center">
+                    <li><a href="{% url 'webapp:index' %}">{% trans 'Главная' %}</a></li>
+                    {% block navigation %}{% endblock %}
+                </ul>
+                <h1>{{ title }}</h1>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    {% include "includes/footer.html" %}
+
+</div>
+
+<script src="{% static 'js/libs.min.js' %}"></script>
+<script src="{% static 'js/common.min.js' %}"></script>
+
+{% block js %}{% endblock %}
+</body>
+</html>

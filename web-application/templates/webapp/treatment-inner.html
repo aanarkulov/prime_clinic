@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <section class="about-treatment">
+        <div class="uk-container">
+            <div class="uk-grid" uk-grid="">
+                <div class="uk-width-1-4@l uk-width-1-3@m uk-flex-last@m">
+                    <div class="item">
+                        <div class="other-services">
+                            <h4>{% trans 'Другие услуги' %}</h4>
+                            <ul>
+                                {% for item in treatment_and_rehabilation %}
+                                    <li class="{% if item.title == title %}uk-active{% endif %}">
+                                        <a href="{% url 'webapp:treatment_inner' item.slug %}">{{ item.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="operating-mode"><h4>{% trans 'Режим работы' %}</h4>
+                        <div class="day"><p>{{ contact_info.working_day }}</p><b> {{ contact_info.work_time_start }}
+                            - {{ contact_info.work_time_stop }}</b></div>
+                        <div class="day"><p>{% trans 'Обед' %}</p><b> {{ contact_info.lunch_time_start }}
+                            - {{ contact_info.lunch_time_stop }}</b></div>
+                        <div class="day"><p>{{ contact_info.day_off }}</p><b> {% trans 'Выходной' %}</b></div>
+                    </div>
+                </div>
+                <div class="uk-width-expand@m ">
+                    <div class="item">
+                        <img class="lazy" data-src="{{ treatment.image.url }}" alt="">
+                        <div class="make-an-appointment">
+                            <div class="uk-grid uk-grid-large uk-flex-middle" uk-grid="">
+                                <div class="uk-width-1-1@m uk-width-expand uk-text-right@m uk-text-center">
+                                    <div class="item">
+                                        <a class="uk-button uk-button-default uk-box-shadow-hover-large" href="#"
+                                           uk-toggle="target: #make-an-appointment">{% trans 'Записаться на прием' %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-text">
+                            {{ treatment.text|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

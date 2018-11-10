@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load filter %}
+
+{% block content %}
+    <section class="faq">
+        <div class="uk-container">
+            <ul uk-accordion="">
+                {% for faq in faqs %}
+                    <li class="{% if request.GET.id|change_type == faq.pk %}uk-open{% endif %}">
+                        <a class="uk-accordion-title" href="#">{{ faq.title }}</a>
+                        <div class="uk-accordion-content">
+                            {{ faq.description|safe }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

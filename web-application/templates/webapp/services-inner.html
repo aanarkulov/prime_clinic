@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block navigation %}
+    <li><a href="{% url 'webapp:services' %}">{% trans 'Услуги' %}</a></li>
+{% endblock %}
+
+{% block content %}
+    <section class="about-treatment">
+        <div class="uk-container">
+            <div class="uk-grid" uk-grid="">
+                <div class="uk-width-1-4@l uk-width-1-3@m uk-flex-last@m">
+                    <div class="item">
+                        <div class="other-services">
+                            <h4>{% trans 'Другие услуги' %}</h4>
+                            <ul>
+                                {% for service in services %}
+                                    <li class="{% if category_service == service %}uk-active{% endif %}">
+                                        <a href="{% url 'webapp:category_service' service.slug %}">{{ service.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="operating-mode"><h4>{% trans 'Режим работы' %}</h4>
+                        <div class="day"><p>{{ contact_info.working_day }}</p><b> {{ contact_info.work_time_start }}
+                            - {{ contact_info.work_time_stop }}</b></div>
+                        <div class="day"><p>{% trans 'Обед' %}</p><b> {{ contact_info.lunch_time_start }}
+                            - {{ contact_info.lunch_time_stop }}</b></div>
+                        <div class="day"><p>{{ contact_info.day_off }}</p><b> {% trans 'Выходной' %}</b></div>
+                    </div>
+                </div>
+                <div class="uk-width-expand@m ">
+                    <div class="name-category">
+                        <h4>{{ title }}</h4>
+                        <div class="uk-grid uk-child-width-1-2@m" uk-grid="">
+                            <div>
+                                <ul>
+                                    {% for service in category_service.services.all %}
+                                        {% if not forloop.counter|divisibleby:2 %}
+                                            <li class=""><a href="{% url 'webapp:service' service.slug %}">
+                                                <span class="uk-margin-small-right"
+                                                      uk-icon="icon: chevron-right"></span>
+                                                {{ service.title }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    {% for service in category_service.services.all %}
+                                        {% if forloop.counter|divisibleby:2 %}
+                                            <li class=""><a href="{% url 'webapp:service' service.slug %}">
+                                                <span class="uk-margin-small-right"
+                                                      uk-icon="icon: chevron-right"></span>
+                                                {{ service.title }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="make-an-appointment">
+                            <div class="uk-grid uk-grid-large uk-flex-middle" uk-grid=""></div>
+                        </div>
+                        <div class="block-text">
+                            {{ category_service.description|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

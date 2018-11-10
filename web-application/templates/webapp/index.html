@@ -1,0 +1,337 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <section class="home-slider uk-grid uk-grid-collapse uk-child-width-1-2@m" uk-height-match="target: &gt; ul">
+        <ul class="slider-nav">
+            {% if announcement %}
+                {% if slides %}
+                    {% for slide in slides %}
+                        <li class="uk-flex uk-flex-middle">
+                            <div class="text uk-flex uk-flex-middle" data-padding="350">
+                                <div>
+                                    {% if announcement.active == True %}
+                                        <h5>{% trans 'Добро пожаловать!' %}</h5>
+                                        <h3>{{ announcement.title }}</h3>
+                                        {{ announcement.description|safe }}
+                                        <a href="{{ announcement.more_info_link }}">{% trans 'Подробнее' %}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="uk-flex uk-flex-middle">
+                        <div class="text uk-flex uk-flex-middle" data-padding="350">
+                            <div>
+                                {% if announcement.active == True %}
+                                    <h5>{% trans 'Добро пожаловать!' %}</h5>
+                                    <h3>{{ announcement.title }}</h3>
+                                    {{ announcement.description|safe }}
+                                    <a href="{{ announcement.more_info_link }}">{% trans 'Подробнее' %}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+        <ul class="slider-for uk-visible@m">
+            {% if slides %}
+                {% for slide in slides %}
+                    <li class="uk-cover-container"><img data-lazy="{{ slide.image.url }}" alt="" uk-cover=""></li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </section>
+    <section class="treatment">
+        <div class="uk-container">
+            <h2 class="uk-text-center">
+                {% if block_name.specialization %}
+                    {{ block_name.specialization }}
+                {% else %}
+                    {% trans 'Мы специализируемся на лечении заболеваний' %}
+                {% endif %}</h2>
+            <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s"
+                 uk-height-match="target: &gt; div &gt; .item &gt; p" uk-grid="">
+                {% for spec in specializations %}
+                    <div>
+                        <div class="item" uk-parallax="bgy: -50"><img src="{{ spec.icon.url }}" alt="">
+                            <h3>{{ spec.icon_name }}</h3>
+                            <p>{{ spec.text }}</p>
+                            {#                            <a class="uk-button uk-button-default" href="">{% trans 'Подробнее' %}</a>#}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="about">
+        <div class="uk-container">
+            <div class="uk-grid uk-grid-large uk-child-width-1-2@m" uk-grid="">
+                <div>
+                    <div class="uk-text-center">
+                        <img src="{% if about_clinic.background_image %}{{ about_clinic.background_image.url }}{% else %}{% static 'img/png/logo2.png' %}{% endif %}" alt="">
+                        <div class="uk-margin">
+                            {{ about_clinic.text|safe }}
+                            <iframe id="player" type="text/html" width="100%" height="315"
+                                    src="http://www.youtube.com/embed/{{ youtube_key }}"
+                                    frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="item uk-margin">
+                        <div class="uk-grid uk-margin-remove-left uk-flex-middle" uk-grid="">
+                            <div class="uk-width-auto@s">
+                                <div class="uk-text-left@s uk-text-center">
+                                    <img src="{% static 'img/png/a1.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="uk-width-expand@s uk-text-left@s uk-text-center">
+                                <div class="uk-card-body uk-padding-small uk-padding-remove-left">
+                                    <h3 class="uk-card-title">{% trans 'Системность' %}</h3>
+                                    <p>{{ about_clinic.systematic }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item uk-margin">
+                        <div class="uk-grid uk-margin-remove-left uk-flex-middle" uk-grid="">
+                            <div class="uk-width-auto@s">
+                                <div class="uk-text-left@s uk-text-center"><img src="{% static 'img/png/a2.png' %}"
+                                                                                alt="">
+                                </div>
+                            </div>
+                            <div class="uk-width-expand@s uk-text-left@s uk-text-center">
+                                <div class="uk-card-body uk-padding-small uk-padding-remove-left">
+                                    <h3 class="uk-card-title">{% trans 'Задачи' %}</h3>
+                                    <p>{{ about_clinic.tasks }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item uk-margin">
+                        <div class="uk-grid uk-margin-remove-left uk-flex-middle" uk-grid="">
+                            <div class="uk-width-auto@s">
+                                <div class="uk-text-left@s uk-text-center">
+                                    <img src="{% static 'img/png/a3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="uk-width-expand@s uk-text-left@s uk-text-center">
+                                <div class="uk-card-body uk-padding-small uk-padding-remove-left">
+                                    <h3 class="uk-card-title">{% trans 'Миссия' %}</h3>
+                                    <p>{{ about_clinic.mission }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="our-doctors">
+        <div class="uk-container">
+            <h2 class="uk-text-center">
+                {% if block_name.doctor %}
+                    {{ block_name.doctor }}
+                {% else %}
+                    {% trans 'наши врачи' %}
+                {% endif %}
+            </h2>
+            <div class="our-doctors-slider">
+                {% for doctor in doctors %}
+                    <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                        <div class="img-wrapper">
+                            <div class="badge">{{ doctor.speciality.speciality }}</div>
+                            <img data-lazy="{% if doctor.photo %}{{ doctor.photo.url }}{% else %}{% static 'img/jpg/doctor.jpg' %}{% endif %}" alt="">
+                        </div>
+                        <div class="name">
+                            <h4>{{ doctor.full_name }}</h4>
+                        </div>
+                        <div class="about-doctor">
+                            <p>{{ doctor.about_doctor|truncatechars:150 }}</p>
+                            <a class="uk-button uk-button-default"
+                               href="{% url 'webapp:doctor' doctor.slug %}">{% trans 'Подробнее' %}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="call-back-block" uk-parallax="bgy: -500">
+        <div class="uk-container uk-container-small">
+            <div class="uk-grid uk-flex-middle" uk-grid="">
+                <div class="uk-width-expand@m uk-text-center">
+                    <h5 class="uk-flex-inline uk-margin-remove">{% trans 'У вас боли в спине или что то другое?' %}</h5>
+                    <a class="uk-button uk-button-default uk-margin-medium-left"
+                       href="">{% trans 'Записаться на прием' %}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="advantages-clinic">
+        <div class="uk-container" uk-height-match="target: &gt; div &gt; div &gt; .item &gt; .about &gt; p">
+            <h2 class="uk-text-center">
+                {% if block_name.advantage %}
+                    {{ block_name.advantage }}
+                {% else %}
+                    {% trans 'преимущества нашей клиники' %}
+                {% endif %}
+            </h2>
+            <div class="uk-grid uk-child-width-1-3@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid=""
+                 uk-height-match="target: &gt; div &gt; .item &gt; .about &gt; h4">
+                {% for advantage in advantages %}
+                    <div>
+                        <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                            <div class="uk-position-relative">
+                                <div class="uk-cover-container">
+                                    <img class="lazy" data-src="{% if advantage.image %}{{ advantage.image.url }}{% else %}{% static 'img/jpg/advantages.jpg' %}{% endif %}" alt="" uk-cover="">
+                                    <canvas width="600" height="420"></canvas>
+                                </div>
+                                <div class="icon uk-flex-inline uk-flex-middle uk-flex-center">
+                                    <div>
+                                        <img src="{% if advantage.icon %}{{ advantage.icon.url }}{% else %}{% static 'img/png/ad1.png' %}{% endif %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about">
+                                <h4>{{ advantage.title }}</h4>
+                                <p>{{ advantage.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="diagnostic" uk-parallax="bgy: -500">
+        <div class="uk-container">
+            <h2 class="uk-text-center">
+                {% if block_name.diagnostic %}
+                    {{ block_name.diagnostic }}
+                {% else %}
+                    {% trans 'диагностика' %}
+                {% endif %}
+            </h2>
+            <div class="diagnostic-slider">
+                {% for diagnostic in diagnostics %}
+                    <div class="item">
+                        <div class="badge">{{ diagnostic.title }}</div>
+                        <div class="uk-box-shadow-small uk-box-shadow-hover-large">
+                            <div class="img-wrapper uk-cover-container">
+                                <img data-lazy="{{ diagnostic.image.url }}" alt="" uk-cover="">
+                                <canvas width="500" height="300"></canvas>
+                            </div>
+                            <div class="bg-white">
+                                <div class="icon">
+                                    <img src="{% if diagnostic.icon %}{{ diagnostic.icon.url }}{% else %}{% static 'img/png/dia1.png' %}{% endif %}" alt="">
+                                </div>
+                                <div class="about-doctor">
+                                    {{ diagnostic.text|safe|truncatechars:150 }}<br><br>
+                                    <a class="uk-button uk-button-default"
+                                       href="{% url 'webapp:diagnostic' diagnostic.slug %}">{% trans 'Подробнее' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="rehabilitation">
+        <div class="uk-container">
+            <h2 class="uk-text-center">
+                {% if block_name.treatment_and_rehabilation %}
+                    {{ block_name.treatment_and_rehabilation }}
+                {% else %}
+                    {% trans 'лечение и реабилитация' %}
+                {% endif %}
+            </h2>
+            <div class="uk-grid uk-child-width-1-3@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid=""
+                 uk-height-match="target: &gt; div &gt; .item &gt; .middle">
+                {% for item in treatment_and_rehabilation %}
+                    <div>
+                        <div class="item">
+                            <div class="uk-padding-small">
+                                <div class="uk-cover-container">
+                                    <img class="lazy" data-src="{{ item.image.url }}" alt="" uk-cover="">
+                                    <canvas width="500" height="300"></canvas>
+                                </div>
+                            </div>
+                            <div class="uk-flex uk-flex-middle middle">
+                                <img src="{% if item.icon %}{{ item.icon.url }}{% else %}{% static 'img/png/reh1.png' %}{% endif %}" alt="">
+                                <div class="uk-margin-small-left">
+                                    <h3>{{ item.title }}</h3>
+                                </div>
+                            </div>
+                            <div class="uk-padding-small about">
+                                {{ item.text|safe|truncatechars:150 }}<br><br>
+                                <a class="uk-button uk-button-default"
+                                   href="{% url 'webapp:treatment_inner' item.slug %}">{% trans 'Подробнее' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="garant" uk-parallax="bgy: -500">
+        <div class="uk-container">
+            <h2 class="uk-text-center">
+                {% if block_name.guarantee %}
+                    {{ block_name.guarantee }}
+                {% else %}
+                    {% trans 'наши гарантии' %}
+                {% endif %}
+            </h2>
+            <div class="uk-grid uk-child-width-1-3@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid="">
+                {% for guarantee in guarantees %}
+                    <div>
+                        <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                            <div class="uk-position-relative">
+                                <div class="uk-cover-container">
+                                    <img class="lazy" data-src="{% if guarantee.image %}{{ guarantee.image.url }}{% else %}{% static 'img/jpg/guarantee.jpg' %}{% endif %}" alt="" uk-cover="">
+                                    <canvas width="600" height="420"></canvas>
+                                </div>
+                                <div class="about uk-overlay uk-overlay-primary uk-position-bottom">
+                                    <h4>{{ guarantee.text }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="news-and-blog">
+        <div class="uk-container">
+            <h2 class="uk-text-center">
+                {% if block_name.news_and_blog %}
+                    {{ block_name.news_and_blog }}
+                {% else %}
+                    {% trans 'новости и блог' %}
+                {% endif %}
+            </h2>
+            <div id="news" class="news-and-blog-slider">
+                {% for item in news_and_blog %}
+                    <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                        <div class="border">
+                            <div class="img-wrapper">
+                                <div class="uk-cover-container">
+                                    <div class="badge">{{ item.added_to|date:'d.m.Y' }}</div>
+                                    <img data-lazy="{{ item.image.url }}" alt="" uk-cover="">
+                                    <canvas width="500" height="300"></canvas>
+                                </div>
+                            </div>
+                            <div class="about-doctor">
+                                <h4>{{ item.title }}</h4>
+                                <a class="uk-button uk-button-default" href="{% url 'webapp:news_and_blog' item.slug %}">{% trans 'Подробнее' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

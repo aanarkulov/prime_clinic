@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block content %}
+    <section class="doctors">
+        <div class="uk-container">
+            <form method="get">
+                <div class="uk-grid uk-grid-small uk-child-width-1-2@s" uk-grid="">
+                    <div>
+                        {% trans 'Специалисты' as specialists %}
+                        {% render_field doctor_form.form.speciality onchange='if(this.value != 0) { this.form.submit(); }' class='form-search-doctors uk-width-1-1' placeholder=specialists %}
+                    </div>
+                    <div>
+                        {% trans 'Ф.И.О' as full_name %}
+                        <select name="full_name" placeholder="{{ full_name }}" class="form-search-doctors uk-width-1-1"
+                                onchange="if(this.value != 0) { this.form.submit(); }" id="id_full_name">
+                            <option value="" selected>---------</option>
+                            {% for doctor in doctor_form.queryset %}
+                                <option value="{{ doctor.full_name }}">{{ doctor.full_name }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="uk-grid uk-child-width-1-3@l uk-child-width-1-2@s" uk-grid=""
+                 uk-height-match="target: &gt; div &gt; div &gt; div &gt; p">
+                {% load staticfiles i18n %}
+                {% for doctor in doctor_form.qs %}
+                    <div class="doctor-item">
+                        <div class="badge">{{ doctor.speciality }}</div>
+                        <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                            <div class="uk-position-relative">
+                                <div class="uk-cover-container">
+                                    <img class="lazy" data-src="{% if doctor.photo %}{{ doctor.photo.url }}{% else %}{% static 'img/jpg/doctor.jpg' %}{% endif %}" alt="" uk-cover="">
+                                    <canvas width="600" height="500"></canvas>
+                                </div>
+                                <div class="icon uk-flex-inline uk-flex-middle uk-flex-center">
+                                    <div>
+                                        <img src="{% if doctor.speciality.icon %}{{ doctor.speciality.icon.url }}{% else %}{% static 'img/png/doctor.png' %}{% endif %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about">
+                                <h4>{{ doctor.full_name }}</h4>
+                                <p>{{ doctor.about_doctor|truncatechars:100 }}</p>
+                                <div class="uk-text-center">
+                                    <a class="uk-button uk-button-default"
+                                       href="{% url 'webapp:doctor' doctor.slug %}">{% trans 'Подробнее' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

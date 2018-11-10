@@ -1,0 +1,21 @@
+{% load form_tags widget_tweaks %}
+
+{% for field in form %}
+    <div class="{{ field|get_class }}">
+        <label>{{ field|add_require_symbol }}</label>
+
+        {% render_field field class+=field|input_class %}
+
+        {% for error in field.errors %}
+            <span role="alert" class="invalid-feedback">{{ error }}</span>
+        {% endfor %}
+
+        {% if field.help_text %}
+            <small class="form-text text-muted">
+                {{ field.help_text|safe }}
+            </small>
+        {% endif %}
+    </div>
+{% endfor %}
+
+

@@ -1,0 +1,614 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-21 18:11+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main/settings.py:131
+msgid "Русский"
+msgstr ""
+
+#: main/settings.py:132
+msgid "English"
+msgstr ""
+
+#: main/settings.py:133
+msgid "Кыргызча"
+msgstr ""
+
+#: templates/base.html:22 webapp/views.py:15
+msgid "Главная"
+msgstr "Home"
+
+#: templates/includes/footer.html:7
+msgid "Звоните нам напрямую"
+msgstr ""
+
+#: templates/includes/footer.html:9 templates/includes/header.html:43
+#: templates/includes/header.html:71 templates/webapp/index.html:167
+msgid "Записаться на прием"
+msgstr ""
+
+#: templates/includes/footer.html:22 templates/includes/header.html:16
+#: templates/includes/header.html:58 webapp/models.py:103 webapp/views.py:75
+msgid "Врачи"
+msgstr "Doctors"
+
+#: templates/includes/footer.html:23 templates/includes/header.html:17
+#: templates/includes/header.html:59 webapp/views.py:87
+msgid "Лечение"
+msgstr "Treatment"
+
+#: templates/includes/footer.html:24 templates/includes/header.html:19
+#: templates/includes/header.html:61 templates/webapp/prices.html:5
+#: webapp/models.py:244
+msgid "Цены"
+msgstr "Prices"
+
+#: templates/includes/footer.html:25 templates/includes/header.html:20
+#: templates/includes/header.html:62 webapp/views.py:145
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/includes/footer.html:31 templates/includes/header.html:15
+#: templates/includes/header.html:57 webapp/models.py:216 webapp/views.py:64
+msgid "Услуги"
+msgstr "Services"
+
+#: templates/includes/footer.html:41 templates/includes/header.html:14
+#: templates/includes/header.html:56 webapp/models.py:77 webapp/models.py:78
+#: webapp/views.py:51
+msgid "О клинике"
+msgstr "About clinic"
+
+#: templates/includes/footer.html:43 templates/webapp/index.html:123
+#: webapp/models.py:69
+msgid "Миссия"
+msgstr ""
+
+#: templates/includes/footer.html:44
+msgid "История"
+msgstr ""
+
+#: templates/includes/footer.html:45
+msgid "Отчеты"
+msgstr ""
+
+#: templates/includes/footer.html:46
+msgid "Документы"
+msgstr ""
+
+#: templates/includes/footer.html:47
+msgid "Вакансии"
+msgstr ""
+
+#: templates/includes/footer.html:48
+msgid "Наши преимущества"
+msgstr ""
+
+#: templates/includes/footer.html:49
+msgid "Лицензии"
+msgstr ""
+
+#: templates/includes/footer.html:55 templates/includes/header.html:18
+#: templates/includes/header.html:60 webapp/models.py:132 webapp/models.py:133
+#: webapp/models.py:185 webapp/views.py:96
+msgid "Диагностика"
+msgstr "Diagnostics"
+
+#: templates/includes/footer.html:66
+msgid "Круглосуточная служба поддержки"
+msgstr ""
+
+#: templates/includes/footer.html:70
+msgid "Присоединяйтесь к нам"
+msgstr ""
+
+#: templates/includes/footer.html:85
+msgid "Работаем по всему Кыргызстану"
+msgstr ""
+
+#: templates/includes/footer.html:103
+msgid "ПОМОЖЕМ ЗАПИСАТЬСЯ НА ПРИЕМ"
+msgstr ""
+
+#: templates/includes/footer.html:104
+msgid "К НУЖНОМУ СПЕЦИАЛИСТУ В ТЕЧЕНИЕ 27 СЕКУНД"
+msgstr ""
+
+#: templates/includes/footer.html:107
+msgid "Ваш телефон"
+msgstr "Your phone number"
+
+#: templates/includes/footer.html:111
+msgid "Записаться"
+msgstr "Make an appointment"
+
+#: templates/includes/footer.html:115
+msgid "Я согласен на обработку персональных данных"
+msgstr ""
+
+#: templates/includes/header.html:33
+msgid "Поиск..."
+msgstr "Search"
+
+#: templates/includes/header.html:78
+msgid "ОБРАТНАЯ СВЯЗЬ"
+msgstr "Feedback"
+
+#: templates/includes/tiny_header.html:38 webapp/views.py:39
+msgid "Вопросы-Ответы"
+msgstr "Faq"
+
+#: templates/includes/tiny_header.html:68
+msgid "Личный кабинет"
+msgstr "Personal Area"
+
+#: templates/webapp/about-us.html:60 templates/webapp/diagnostics.html:26
+#: templates/webapp/doctors.html:46 templates/webapp/index.html:17
+#: templates/webapp/index.html:31 templates/webapp/index.html:154
+#: templates/webapp/index.html:227 templates/webapp/index.html:264
+#: templates/webapp/index.html:271 templates/webapp/index.html:325
+#: templates/webapp/services.html:18 templates/webapp/treatment.html:26
+#: webapp/models.py:35
+msgid "Подробнее"
+msgstr "Learn More"
+
+#: templates/webapp/contacts.html:15
+msgid "адрес"
+msgstr ""
+
+#: templates/webapp/contacts.html:19
+#, fuzzy
+#| msgid "Ваш телефон"
+msgid "телефоны"
+msgstr "Your phone number"
+
+#: templates/webapp/contacts.html:29
+#, fuzzy
+#| msgid "Диагностика"
+msgid "социальные сети"
+msgstr "Diagnostics"
+
+#: templates/webapp/contacts.html:45 webapp/admin.py:65 webapp/admin.py:96
+msgid "Режим работы"
+msgstr ""
+
+#: templates/webapp/contacts.html:64
+msgid "У вас остались вопросы или пожелание?"
+msgstr ""
+
+#: templates/webapp/contacts.html:65
+msgid ""
+"Вы можете задать любые вопросы по телефону или связаться с нами через нашу "
+"контактную форму ниже."
+msgstr ""
+
+#: templates/webapp/contacts.html:75
+msgid "Отправить"
+msgstr ""
+
+#: templates/webapp/contacts.html:80
+msgid ""
+"Одно или несколько полей содержат ошибочные данные. Пожалуйста, проверьте их "
+"и попробуйте ещё раз."
+msgstr ""
+
+#: templates/webapp/doctors.html:10
+msgid "Специалисты"
+msgstr "Specialists"
+
+#: templates/webapp/doctors.html:14
+msgid "Ф.И.О"
+msgstr ""
+
+#: templates/webapp/index.html:14 templates/webapp/index.html:28
+msgid "Добро пожаловать!"
+msgstr "Welcome!"
+
+#: templates/webapp/index.html:53 webapp/models.py:182
+msgid "Мы специализируемся на лечении заболеваний"
+msgstr ""
+
+#: templates/webapp/index.html:93 webapp/models.py:67
+msgid "Системность"
+msgstr ""
+
+#: templates/webapp/index.html:108 webapp/models.py:68
+msgid "Задачи"
+msgstr ""
+
+#: templates/webapp/index.html:139
+msgid "наши врачи"
+msgstr ""
+
+#: templates/webapp/index.html:165
+msgid "У вас боли в спине или что то другое?"
+msgstr ""
+
+#: templates/webapp/index.html:178
+msgid "преимущества клиники"
+msgstr ""
+
+#: templates/webapp/index.html:211
+msgid "диагностика"
+msgstr ""
+
+#: templates/webapp/index.html:242
+msgid "лечение и реабилитация"
+msgstr ""
+
+#: templates/webapp/index.html:280
+msgid "наши гарантии"
+msgstr ""
+
+#: templates/webapp/index.html:308
+msgid "новости и блог"
+msgstr ""
+
+#: templates/webapp/prices.html:15
+msgid "Цены по другим направлениям"
+msgstr ""
+
+#: templates/webapp/prices.html:31
+#, fuzzy
+#| msgid "Врачи"
+msgid "Наши цены"
+msgstr "Doctors"
+
+#: templates/webapp/prices.html:34
+msgid "Скачать прайслист"
+msgstr ""
+
+#: templates/webapp/prices.html:45
+msgid "п/п"
+msgstr ""
+
+#: templates/webapp/prices.html:46 webapp/models.py:199 webapp/models.py:215
+msgid "Услуга"
+msgstr ""
+
+#: templates/webapp/prices.html:47 webapp/models.py:236
+msgid "Стоимость (сом)"
+msgstr ""
+
+#: templates/webapp/prices.html:48
+msgid "Длительность"
+msgstr ""
+
+#: webapp/admin.py:95
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Социальные сети"
+msgstr "Diagnostics"
+
+#: webapp/apps.py:7
+msgid "Веб приложение"
+msgstr ""
+
+#: webapp/choices.py:4
+msgid "Первый"
+msgstr ""
+
+#: webapp/forms.py:19
+msgid "Максимальная длина текста - 4000."
+msgstr "The max length of the text is 4000."
+
+#: webapp/models.py:10 webapp/models.py:33 webapp/models.py:62
+#: webapp/models.py:167
+msgid "Заголовок"
+msgstr ""
+
+#: webapp/models.py:11 webapp/models.py:34 webapp/models.py:200
+msgid "Описание"
+msgstr ""
+
+#: webapp/models.py:22 webapp/models.py:110 webapp/models.py:125
+#: webapp/models.py:140 webapp/models.py:155 webapp/models.py:169
+#: webapp/models.py:201
+#, fuzzy
+#| msgid "Лечение"
+msgid "Изображение"
+msgstr "Treatment"
+
+#: webapp/models.py:35
+msgid "Вставьте ссылку для кнопки подробнее"
+msgstr ""
+
+#: webapp/models.py:36
+msgid "Активность"
+msgstr ""
+
+#: webapp/models.py:36
+msgid "Включить/Выключить показ"
+msgstr ""
+
+#: webapp/models.py:42 webapp/models.py:43
+msgid "Блок анонс"
+msgstr ""
+
+#: webapp/models.py:47 webapp/models.py:109 webapp/models.py:124
+#: webapp/models.py:139 webapp/models.py:152
+msgid "Иконка"
+msgstr ""
+
+#: webapp/models.py:48 webapp/models.py:153
+msgid "Название иконки"
+msgstr ""
+
+#: webapp/models.py:49 webapp/models.py:65 webapp/models.py:108
+#: webapp/models.py:123 webapp/models.py:138 webapp/models.py:154
+#: webapp/models.py:168 webapp/models.py:259
+msgid "Текст"
+msgstr ""
+
+#: webapp/models.py:51 webapp/models.py:111 webapp/models.py:126
+#: webapp/models.py:141 webapp/models.py:156 webapp/models.py:170
+#: webapp/models.py:209 webapp/models.py:221
+msgid "Ярлык"
+msgstr ""
+
+#: webapp/models.py:57
+msgid "Специализация"
+msgstr ""
+
+#: webapp/models.py:58
+msgid "Специализации"
+msgstr ""
+
+#: webapp/models.py:63
+#, fuzzy
+#| msgid "Лечение"
+msgid "Фоновое изображение"
+msgstr "Treatment"
+
+#: webapp/models.py:64
+msgid "Youtube ссылка"
+msgstr ""
+
+#: webapp/models.py:70
+#, fuzzy
+#| msgid "Лечение"
+msgid "Видение"
+msgstr "Treatment"
+
+#: webapp/models.py:71
+msgid "Философия"
+msgstr ""
+
+#: webapp/models.py:82 webapp/models.py:95
+msgid "Специальность"
+msgstr ""
+
+#: webapp/models.py:88
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Специальность врача"
+msgstr "Diagnostics"
+
+#: webapp/models.py:89
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Специальности врача"
+msgstr "Diagnostics"
+
+#: webapp/models.py:94
+msgid "Краткое описание"
+msgstr ""
+
+#: webapp/models.py:96
+msgid "Фотография"
+msgstr ""
+
+#: webapp/models.py:102
+#, fuzzy
+#| msgid "Врачи"
+msgid "Врач"
+msgstr "Doctors"
+
+#: webapp/models.py:107
+msgid "Название преимущества"
+msgstr ""
+
+#: webapp/models.py:117
+msgid "Преимущество клиники"
+msgstr ""
+
+#: webapp/models.py:118 webapp/models.py:184
+msgid "Преимущества клиники"
+msgstr ""
+
+#: webapp/models.py:122
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Название диагностики"
+msgstr "Diagnostics"
+
+#: webapp/models.py:137
+msgid "Название методов лечения и реабилитации"
+msgstr ""
+
+#: webapp/models.py:147 webapp/models.py:148 webapp/models.py:186
+msgid "Лечение и реабилитация"
+msgstr ""
+
+#: webapp/models.py:162
+msgid "Гарантия"
+msgstr ""
+
+#: webapp/models.py:163
+msgid "Гарантии"
+msgstr ""
+
+#: webapp/models.py:177
+msgid "Новость и блог"
+msgstr ""
+
+#: webapp/models.py:178
+msgid "Новости и блоги"
+msgstr ""
+
+#: webapp/models.py:183
+#, fuzzy
+#| msgid "Врачи"
+msgid "Наши врачи"
+msgstr "Doctors"
+
+#: webapp/models.py:187
+msgid "Наши гарантии"
+msgstr ""
+
+#: webapp/models.py:188
+msgid "Новости и блог"
+msgstr ""
+
+#: webapp/models.py:194
+msgid "Название блока"
+msgstr ""
+
+#: webapp/models.py:195
+msgid "Название блоков"
+msgstr ""
+
+#: webapp/models.py:203 webapp/models.py:284
+msgid "Рабочие дни"
+msgstr ""
+
+#: webapp/models.py:204 webapp/models.py:285
+msgid "Выходные дни"
+msgstr ""
+
+#: webapp/models.py:205 webapp/models.py:286
+msgid "Робочее время с:"
+msgstr ""
+
+#: webapp/models.py:206 webapp/models.py:208 webapp/models.py:287
+#: webapp/models.py:289
+msgid "до:"
+msgstr ""
+
+#: webapp/models.py:207 webapp/models.py:288
+msgid "Обед с:"
+msgstr ""
+
+#: webapp/models.py:220
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Название категория"
+msgstr "Diagnostics"
+
+#: webapp/models.py:227
+#, fuzzy
+#| msgid "Врачи"
+msgid "Категория цен"
+msgstr "Doctors"
+
+#: webapp/models.py:228
+#, fuzzy
+#| msgid "Врачи"
+msgid "Категории цен"
+msgstr "Doctors"
+
+#: webapp/models.py:232
+msgid "Категория"
+msgstr ""
+
+#: webapp/models.py:233
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Специальности"
+msgstr "Diagnostics"
+
+#: webapp/models.py:235
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Название услуги"
+msgstr "Diagnostics"
+
+#: webapp/models.py:237
+#, fuzzy
+#| msgid "Диагностика"
+msgid "Длительность (мин)"
+msgstr "Diagnostics"
+
+#: webapp/models.py:243
+msgid "Цена"
+msgstr ""
+
+#: webapp/models.py:248
+msgid "Файл"
+msgstr ""
+
+#: webapp/models.py:254 webapp/models.py:255
+msgid "Прайслист для загрузки"
+msgstr ""
+
+#: webapp/models.py:266 webapp/models.py:267
+msgid "Инфо на странице цены"
+msgstr ""
+
+#: webapp/models.py:271 webapp/models.py:302
+#, fuzzy
+#| msgid "Ваш телефон"
+msgid "Телефон"
+msgstr "Your phone number"
+
+#: webapp/models.py:275
+msgid "Круглосуточная служба поддержки:"
+msgstr ""
+
+#: webapp/models.py:277
+msgid "Email адрес"
+msgstr ""
+
+#: webapp/models.py:282
+msgid "Адрес"
+msgstr ""
+
+#: webapp/models.py:292 webapp/models.py:295 webapp/models.py:296
+msgid "Контактная информация"
+msgstr ""
+
+#: webapp/models.py:300
+msgid "Имя"
+msgstr ""
+
+#: webapp/models.py:301
+msgid "Тема"
+msgstr ""
+
+#: webapp/models.py:304
+#, fuzzy
+#| msgid "Лечение"
+msgid "Сообщение"
+msgstr "Treatment"
+
+#: webapp/models.py:310
+msgid "Обратная связь"
+msgstr ""
+
+#: webapp/models.py:311
+msgid "Обратные связи"
+msgstr ""
+
+#~ msgid "Понедельник - Суббота"
+#~ msgstr "Monday - Saturday"
+
+#~ msgid "Воскресенье"
+#~ msgstr "Sunday"
+
+#~ msgid "Услгуи"
+#~ msgstr "Services"

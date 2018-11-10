@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+{% block content %}
+    <section class="rehabilitation">
+        <div class="uk-container">
+            <div class="uk-grid uk-child-width-1-3@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid=""
+                 uk-height-match="target: &gt; div &gt; .item &gt; .middle">
+                {% for diagnostic in diagnostics %}
+                    <div>
+                        <div class="item">
+                            <div class="uk-padding-small">
+                                <div class="uk-cover-container">
+                                    <img class="lazy" data-src="{{ diagnostic.image.url }}" alt="" uk-cover="">
+                                    <canvas width="500" height="300"></canvas>
+                                </div>
+                            </div>
+                            <div class="uk-flex uk-flex-middle middle">
+                                <img src="{% if diagnostic.icon %}{{ diagnostic.icon.url }}{% else %}{% static 'img/png/dia1.png' %}{% endif %}" alt="">
+                                <div class="uk-margin-small-left">
+                                    <h3>{{ diagnostic.title }}</h3>
+                                </div>
+                            </div>
+                            <div class="uk-padding-small about">
+                                {{ diagnostic.text|safe|truncatechars:150 }} <br><br>
+                                <a class="uk-button uk-button-default"
+                                   href="{% url 'webapp:diagnostic' diagnostic.slug %}">{% trans 'Подробнее' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

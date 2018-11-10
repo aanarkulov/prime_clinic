@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+{% block navigation %}
+    <li><a href="{% url 'webapp:prices_page' %}">{% trans 'Цены' %}</a></li>
+{% endblock %}
+
+{% block content %}
+    <section class="price-block">
+        <div class="uk-container">
+            <div class="uk-grid" uk-grid="">
+                <div class="uk-width-1-4@l uk-width-1-3@m">
+                    <div class="item">
+                        <div class="other-services">
+                            <h4>{% trans 'Цены по другим направлениям' %}</h4>
+                            <ul>
+                                {% for item in price_categories %}
+                                    {% if item.price_category.exists %}
+                                        <li class="{% if item.title == title %}uk-active{% endif %}">
+                                            <a href="{% url 'webapp:prices' item.slug %}">{{ item.title }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-expand@m ">
+                    <div class="item top-block uk-flex uk-flex-between@s uk-flex-column@m">
+                        <div>
+                            <h4>{% trans 'Наши цены' %}</h4>
+                        </div>
+                        <div class="excel">
+                            <a href="{{ download.file.url }}" download="">{% trans 'Скачать прайслист' %}</a>
+                        </div>
+                    </div>
+                    <div class="placeholder">
+                        {{ info.text|safe }}
+                    </div>
+                    <div class="price-block-table">
+                        <div>
+                            <table class="uk-table uk-table-divider uk-table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="uk-table-small">№ {% trans 'п/п' %}</th>
+                                    <th class="uk-table-expand">{% trans 'Услуга' %}</th>
+                                    <th class="uk-width-medium uk-text-center">{% trans 'Стоимость (сом)' %}</th>
+                                    <th class="uk-width-small uk-text-center">{% trans 'Длительность' %}</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for price in first %}
+                                    <tr>
+                                        <td class="uk-text-center">{{ forloop.counter }}</td>
+                                        <td>{{ price.title }}</td>
+                                        <td class="uk-text-center">{{ price.cost }}</td>
+                                        <td class="uk-text-center">{{ price.duration }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                                {% for item in second %}
+                                    {% if item.price_speciality.exists %}
+                                        <tr style="background-color:#fff;color:#0ab6ca;">
+                                            <td colspan="4" align="center">{{ item.speciality }}</td>
+                                        </tr>
+                                        <tbody>
+                                        {% for price in  item.price_speciality.all %}
+                                            <tr>
+                                                <td class="uk-text-center">{{ forloop.counter }}</td>
+                                                <td>{{ price.title }}</td>
+                                                <td class="uk-text-center">{{ price.cost }}</td>
+                                                <td class="uk-text-center">{{ price.duration }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    {% endif %}
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

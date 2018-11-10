@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block content %}
+    <section class="about-us-page">
+        <div class="uk-container">
+            <div class="uk-grid uk-width-2-3@m uk-margin-auto uk-child-width-1-1" uk-grid="">
+                <div class="uk-text-center">
+                    {{ about_clinic.text|safe }}
+                </div>
+                <div class="video-block">
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{ youtube_key }}"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="grid-about">
+        <div class="uk-container">
+            <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s" uk-grid=""
+                 uk-height-match="target: &gt; div &gt; .item &gt; p">
+                <div>
+                    <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                        <h5>Видение</h5>
+                        <p>{{ about_clinic.vision }}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                        <h5>Миссия</h5>
+                        <p>{{ about_clinic.mission }}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                        <h5>Наша философия</h5>
+                        <p>{{ about_clinic.philosophy }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="our-doctors">
+        <div class="uk-container">
+            <h2 class="uk-text-center">Наша команда</h2>
+            <div class="our-doctors-block uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-collapse " uk-grid="">
+                {% for doctor in doctors %}
+                    <div>
+                        <div class="item uk-box-shadow-small uk-box-shadow-hover-large">
+                            <div class="img-wrapper">
+                                <div class="badge">{{ doctor.speciality }}</div>
+                                <img src="
+
+
+                                        {% if doctor.photo %}{{ doctor.photo.url }}{% else %}{% static 'img/jpg/doctor.jpg' %}{% endif %}"
+                                     alt="">
+                                <div class="name">
+                                    <h4>{{ doctor.full_name }}</h4>
+                                </div>
+                                <div class="about-doctor">
+                                    <p>{{ doctor.about_doctor|truncatechars:100 }}</p>
+                                    <a class="uk-button uk-button-default"
+                                       href="{% url 'webapp:doctor' doctor.slug %}">{% trans 'Подробнее' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </section>
+{% endblock %}

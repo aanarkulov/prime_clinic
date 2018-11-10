@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load staticfiles i18n filter %}
+
+{% block navigation %}
+    <li><a href="{% url 'webapp:diagnostics' %}">{% trans 'Диагностика' %}</a></li>
+{% endblock %}
+
+{% block content %}
+    <section class="about-treatment" style="padding-bottom: 0;">
+        <div class="uk-container">
+            <div class="uk-grid" uk-grid="">
+                <div class="uk-width-1-4@l uk-width-1-3@m uk-flex-last@m">
+                    <div class="item">
+                        <div class="other-services"><h4>{% trans 'Диагностика' %}</h4>
+                            <ul>
+                                {% for item in diagnostics %}
+                                    <li class="{% if item.title == title %}uk-active{% endif %}">
+                                        <a href="{% url 'webapp:diagnostic' item.slug %}">{{ item.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="operating-mode"><h4>{% trans 'Режим работы' %}</h4>
+                        <div class="day"><p>{{ contact_info.working_day }}</p><b> {{ contact_info.work_time_start }}
+                            - {{ contact_info.work_time_stop }}</b></div>
+                        <div class="day"><p>{% trans 'Обед' %}</p><b> {{ contact_info.lunch_time_start }}
+                            - {{ contact_info.lunch_time_stop }}</b></div>
+                        <div class="day"><p>{{ contact_info.day_off }}</p><b> {% trans 'Выходной' %}</b></div>
+                    </div>
+                </div>
+                <div class="uk-width-expand@m uk-first-column">
+                    <div class="name-category">
+                        <h4>{{ diagnostic.title }}</h4>
+                        <div class="uk-grid uk-child-width-1-2@m" uk-grid="">
+                            <div>
+                                <ul>
+                                    {% for type in diagnostic.types.all %}
+                                        {% if not forloop.counter|divisibleby:2 %}
+                                            <li class="{% if request.GET.type|change_type == forloop.counter0 or request|get_zero_or_none == forloop.counter0 %}active-page{% endif %}">
+                                                <a href="{{ request.path }}?type={{ forloop.counter0 }}">
+                                                    <span class="uk-margin-small-right"
+                                                          uk-icon="icon: chevron-right"></span>{{ type.type }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    {% for type in diagnostic.types.all %}
+                                        {% if forloop.counter|divisibleby:2 %}
+                                            <li class="{% if request.GET.type|change_type == forloop.counter0 %}active-page{% endif %}">
+                                                <a name="test" href="{{ request.path }}?type={{ forloop.counter0 }}">
+                                                    <span class="uk-margin-small-right"
+                                                          uk-icon="icon: chevron-right"></span>{{ type.type }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% for item in filter_type.qs %}
+                        <div class="item">
+                            {#                            <img class="lazy" data-src="{{ diagnostic.image.url }}" alt="">#}
+                            <div class="make-an-appointment">
+                                <div class="uk-grid uk-grid-large uk-flex-middle" uk-grid=""></div>
+                            </div>
+                            <div class="block-text">
+                                <div>{{ item.description|safe }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
